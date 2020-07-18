@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div style="margin-top: 100px;">
+        <h2 style="margin-bottom: 60px;">회원가입</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="회원가입">
+            <input type="button" onclick="history.back()" value="전으로"></inputbutton>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}My page{% endblock %}
+
+{% block content %}
+    <div style="margin-top: 70px">
+        <h2 style="margin-bottom: 60px;">마이 페이지</h2>
+        <p><label for="name">이름: {{ user.name }}</label>
+        <p><label for="id">ID: {{ user.id }}</label>
+        <p><label for="password">비밀번호: {{ user.password }}</label>
+        <p><label for="subject">담당 과목: {{ user.subject }}</label>
+        <p><label for="grade">담당 학년: {{ user.grade }}</label>
+        <p><input type="button" onclick="history.back()" value="전으로"></inputbutton>
+    </div>
+{% endblock %}

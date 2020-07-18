@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div style="margin-top: 100px;">
+        <h2 style="margin-bottom: 60px;">회원정보 변경</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            <p><label for="id">이름: </label>
+                    <input id="name" type="text" name="name" maxlength="30"  value="{{ user.name }}" disabled/>
+                </p>
+            <p><label for="id">ID:</label>
+                    <input id="id" type="text" name="id" maxlength="30"  value="{{ user.id }}" disabled/>
+                </p>
+            <p><label for="id">비밀번호:</label>
+                    <input id="password" type="text" name="password" maxlength="30" value="{{ user.password }}" disabled/>
+                </p>
+                <p><label for="id">담당 과목:</label>
+                    <select name="subjects" id="subjects">
+                        {% for subject in user.get_subjects_list %}
+                            {% if subject == user.subject %}
+                                <option value="{{ subject }}" selected>{{ subject }}</option>
+                            {% else %}
+                                <option value="{{ subject }}">{{ subject }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </p>
+                <p><label for="id_message">담당 학년:</label>
+                    <select name="grades" id="grades">
+                        {% for grade in user.get_grades_list %}
+                            {% if grade == user.grade %}
+                                <option value="{{ grade }}" selected>{{ grade }}</option>
+                            {% else %}
+                                <option value="{{ grade }}">{{ grade }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+            <input type="submit" value="변경">
+            <input type="button" onclick="history.back()" value="전으로"></inputbutton>
+        </form>
+    </div>
+{% endblock %}
